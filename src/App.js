@@ -1,17 +1,34 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import react from 'react';
 import './App.css';
 
-function Title(){
-  return(
+//function 으로 컴포넌트생성
+//class 로 컴포넌트 생성의 차이
+// function Title(props){
+//   return(
+//     <div id="title">
+//       <h1>{props.title}</h1>
+//       <p>자주 묻는 질문입니다.</p>
+//       {/* 타이틀 jsx 주석 */}
+//     </div>
+//   );
+// }
+
+class Title extends react {
+  render(){
+    return(
     <div id="title">
-      <h1>FAQ</h1>
-      <p>자주 묻는 질문입니다.</p>
-      {/* 타이틀 jsx 주석 */}
+      <h1>{this.props.title}</h1>
+      <p>{this.props.desc}</p>
+     {/* 타이틀 jsx 주석 */}
     </div>
-  );
+    );
+  }
+
+
 }
 
-function FaqList(){
+function FaqList(props){
   return(
     <div id="faqList">
         <ul>
@@ -38,7 +55,7 @@ function App() {
     //리액트는 가장 상위 태그는 하나만 존재해야한다는 사실~!
     <div id="wrap">
       
-      <Title></Title>
+      <Title title='faq' desc='자주 묻는 질문입니다.'></Title>
       <FaqList></FaqList>
       <Content></Content>
     </div>
