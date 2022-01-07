@@ -8,13 +8,13 @@ import './App.css';
 //   return(
 //     <div id="title">
 //       <h1>{props.title}</h1>
-//       <p>자주 묻는 질문입니다.</p>
+//       <p>{props.desc}</p>
 //       {/* 타이틀 jsx 주석 */}
 //     </div>
 //   );
 // }
 
-class Title extends react {
+class Title extends react.Component {
   render(){
     return(
     <div id="title">
@@ -28,13 +28,15 @@ class Title extends react {
 
 }
 
-function FaqList(props){
+function FaqList(){
   return(
     <div id="faqList">
         <ul>
-            <li><a href="#">자주묻는질문1</a></li>
-            <li><a href="#">자주묻는질문2</a></li>
-            <li><a href="#">자주묻는질문3</a></li>
+            {/*a 태그 에 # 넣을 넣으면 유효하지 않은 값이라고 이야기 하니
+             html과 달리 임시로 값을 넣을 땐 #!을 사용하죠! */}
+            <li><a href="#!">자주묻는질문1</a></li>
+            <li><a href="#!">자주묻는질문2</a></li>
+            <li><a href="#!">자주묻는질문3</a></li>
         </ul>
     </div>
   );
@@ -55,7 +57,7 @@ function App() {
     //리액트는 가장 상위 태그는 하나만 존재해야한다는 사실~!
     <div id="wrap">
       
-      <Title title='faq' desc='자주 묻는 질문입니다.'></Title>
+      <Title title='FAQ' desc='자주 묻는 질문입니다.'></Title>
       <FaqList></FaqList>
       <Content></Content>
     </div>
