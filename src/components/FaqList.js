@@ -16,7 +16,7 @@ class FaqList extends React.Component{
         
         //그렇다면 태그 자체를 삽입할수 있는 방법을 찾아야 한다..!
         for(let i=0; i < boardListLen; i++){
-         list.push(<li class="list"><a href="#!">자주묻는질문2</a></li>);
+         list.push(<li className="list" key={i}><a href="#!">자주묻는질문2</a></li>);
          }
          //jsx라는 것을 명심하자! html 이 아니다 유사 html이다.
         
