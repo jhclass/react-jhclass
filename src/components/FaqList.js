@@ -2,14 +2,29 @@ import React from "react";
 
 class FaqList extends React.Component{
     render(){
+        const boardList = ['자주묻는질문1','자주묻는질문2','자주묻는질문3'];
+        const boardListLen = boardList.length;
+        const list = [];
+        //결과는?
+        // let list = '<ul>';
+        // for(let i=0; i < boardListLen; i++){
+        // list += '<li class="list"><a href="#!">자주묻는질문2</a></li>';
+        // }
+        // list += '</ul>'
+        // console.log(list)
+        //문자열로 들어가버린다...
+        
+        //그렇다면 태그 자체를 삽입할수 있는 방법을 찾아야 한다..!
+        for(let i=0; i < boardListLen; i++){
+         list.push(<li class="list"><a href="#!">자주묻는질문2</a></li>);
+         }
+         //jsx라는 것을 명심하자! html 이 아니다 유사 html이다.
+        
         return(
         <div id="faqList">
+            {/* {list} */}
             <ul>
-                {/*a 태그 에 # 넣을 넣으면 유효하지 않은 값이라고 이야기 하니
-                html과 달리 임시로 값을 넣을 땐 #!을 사용하죠! */}
-                <li><a href="#!">자주묻는질문1</a></li>
-                <li><a href="#!">자주묻는질문2</a></li>
-                <li><a href="#!">자주묻는질문3</a></li>
+               {list}
             </ul>
         </div>
         );

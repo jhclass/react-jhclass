@@ -12,7 +12,8 @@ class App extends React.Component {
     super(props);//초기화
     //state설정
     this.state={
-      headingTitle:{title:'FAQ',desc:'자주 묻는 질문입니다.'}
+      headingTitle:{title:'FAQ',desc:'자주 묻는 질문입니다.'},
+      faqList:{}
     }
   }
   render(){
