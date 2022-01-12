@@ -2,21 +2,14 @@ import React from "react";
 
 class FaqList extends React.Component{
     render(){
-        const boardList = ['자주묻는질문1','자주묻는질문2','자주묻는질문3'];
-        const boardListLen = boardList.length;
-        const list = [];
-        //결과는?
-        // let list = '<ul>';
-        // for(let i=0; i < boardListLen; i++){
-        // list += '<li class="list"><a href="#!">자주묻는질문2</a></li>';
-        // }
-        // list += '</ul>'
-        // console.log(list)
-        //문자열로 들어가버린다...
+        const data = this.props.faqList; //데이터를 담음. (App.js 안에 FaqList 컴포넌트의 faqList속성을 가져와서 담음)
+        console.log(data);
         
-        //그렇다면 태그 자체를 삽입할수 있는 방법을 찾아야 한다..!
+        const boardListLen = data.length;
+        const lists = [];
+        
         for(let i=0; i < boardListLen; i++){
-         list.push(<li className="list" key={i}><a href="#!">자주묻는질문2</a></li>);
+         lists.push(<li className="list" key={i}><a href={'/board/'+data[i].id}>{data[i].title}</a></li>);
          }
          //jsx라는 것을 명심하자! html 이 아니다 유사 html이다.
         
@@ -24,7 +17,7 @@ class FaqList extends React.Component{
         <div id="faqList">
             {/* {list} */}
             <ul>
-               {list}
+               {lists}
             </ul>
         </div>
         );
