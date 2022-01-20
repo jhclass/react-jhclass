@@ -10,6 +10,7 @@ class App extends React.Component {
     super(props);//초기화
     //state설정
     this.state={
+      mode:'main',
       headingTitle:{title:'FAQ',desc:'자주 묻는 질문입니다.'},
       faqList:[
         {id:1, title:'자주묻는질문1',desc:'자주묻는질문1에 대한 내용이 여기에 포함됩니다.'},
@@ -24,9 +25,13 @@ class App extends React.Component {
     //리액트는 가장 상위 태그는 하나만 존재해야한다는 사실~!
     <div id="wrap">
       
-      <Title title={this.state.headingTitle.title} desc={this.state.headingTitle.desc}></Title>
+      <Title mode={this.state.mode} title={this.state.headingTitle.title} desc={this.state.headingTitle.desc} onChangePage={()=>{
+       alert('a');
+        this.setState({mode:'read'});
+
+      }}></Title>
       <FaqList faqList={this.state.faqList}></FaqList>
-      <Content></Content>
+      <Content content></Content>
     </div>
     
   );
