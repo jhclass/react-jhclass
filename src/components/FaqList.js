@@ -9,7 +9,11 @@ class FaqList extends React.Component{
         const lists = [];
         
         for(let i=0; i < boardListLen; i++){
-         lists.push(<li className="list" key={i}><a href={'/board/'+data[i].id}>{data[i].title}</a></li>);
+         lists.push(<li className="list" key={i}><a href={'/board/'+data[i].id} onClick={(e)=>{
+            e.preventDefault(); 
+            this.props.onChangePage(data[i].id);
+
+         }}>{data[i].title}</a></li>);
          }
          //jsx라는 것을 명심하자! html 이 아니다 유사 html이다.
         

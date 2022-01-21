@@ -11,11 +11,12 @@ class App extends React.Component {
     //state설정
     this.state={
       mode:'main',
+      selected_idx:0,
       headingTitle:{title:'FAQ',desc:'자주 묻는 질문입니다.'},
       faqList:[
-        {id:1, title:'자주묻는질문1',desc:'자주묻는질문1에 대한 내용이 여기에 포함됩니다.'},
-        {id:2, title:'자주묻는질문2',desc:'자주묻는질문2에 대한 내용이 여기에 포함됩니다.'},
-        {id:3, title:'자주묻는질문3',desc:'자주묻는질문3에 대한 내용이 여기에 포함됩니다.'}
+        {id:0, title:'자주묻는질문1',desc:'자주묻는질문1에 대한 내용이 여기에 포함됩니다.'},
+        {id:1, title:'자주묻는질문2',desc:'자주묻는질문2에 대한 내용이 여기에 포함됩니다.'},
+        {id:2, title:'자주묻는질문3',desc:'자주묻는질문3에 대한 내용이 여기에 포함됩니다.'}
       ]
     }
   }
@@ -26,12 +27,17 @@ class App extends React.Component {
     <div id="wrap">
       
       <Title mode={this.state.mode} title={this.state.headingTitle.title} desc={this.state.headingTitle.desc} onChangePage={()=>{
-       alert('a');
-        this.setState({mode:'read'});
+       alert('FAQ 메인화면입니다.');
+        this.setState({mode:'main'});
 
       }}></Title>
-      <FaqList faqList={this.state.faqList}></FaqList>
-      <Content content></Content>
+      <FaqList faqList={this.state.faqList} onChangePage={(idx)=>{
+        alert('자주묻는질문출력');
+        alert(idx); // FaqList.js에서 data[i].id의 값을 idx인자로 전달은 것!
+        alert(`자주묻는질문${idx}출력`); //백틱도 활용해봅시다 :)
+        this.setState({mode:'read',selected_idx:idx});
+      }}></FaqList>
+      <Content content={this.state.faqList} selected={this.state.selected_idx}></Content>
     </div>
     
   );
