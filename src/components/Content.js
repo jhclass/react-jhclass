@@ -8,13 +8,22 @@ class FaqList extends React.Component{
         sel_idx = this.props.selected;
         console.log(sel_idx);
         
-        
-        return(
-        <div id="content">
-            <h2>{content_data[sel_idx].title}</h2>
-            <p>{content_data[sel_idx].desc}</p>
-        </div>
-        );
+        const thisMode = this.props.mode;
+        if(thisMode==='main'){
+            return(
+            <div id="content" style={{display:"none"}}>
+                <h2>{content_data[sel_idx].title}</h2>
+                <p>{content_data[sel_idx].desc}</p>
+            </div>
+            );
+        }else{
+            return(
+            <div id="content">
+                <h2>{content_data[sel_idx].title}</h2>
+                <p>{content_data[sel_idx].desc}</p>
+            </div>
+            );
+        }
     }
   }
 

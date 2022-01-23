@@ -34,10 +34,10 @@ class App extends React.Component {
       <FaqList faqList={this.state.faqList} onChangePage={(idx)=>{
         alert('자주묻는질문출력');
         alert(idx); // FaqList.js에서 data[i].id의 값을 idx인자로 전달은 것!
-        alert(`자주묻는질문${idx}출력`); //백틱도 활용해봅시다 :)
+        alert(`자주묻는질문${idx+1}출력`); //백틱도 활용해봅시다 :)
         this.setState({mode:'read',selected_idx:idx});
       }}></FaqList>
-      <Content content={this.state.faqList} selected={this.state.selected_idx}></Content>
+      <Content mode={this.state.mode} content={this.state.faqList} selected={this.state.selected_idx}></Content>
     </div>
     
   );
