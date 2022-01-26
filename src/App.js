@@ -3,6 +3,8 @@ import React from 'react';
 import Title from './components/Title';
 import FaqList from './components/FaqList';
 import Content from './components/Content';
+import Datagroup from './components/Datagroup';
+import Btngroup from './components/Btngroup';
 import './App.css';
 
 class App extends React.Component {
@@ -20,6 +22,7 @@ class App extends React.Component {
       ]
     }
   }
+ 
   render(){
   return (
     //wrap 이 만약에 없다면?? 에러가 뜹니다! 이유는? 
@@ -38,6 +41,8 @@ class App extends React.Component {
         this.setState({mode:'read',selected_idx:idx});
       }}></FaqList>
       <Content mode={this.state.mode} content={this.state.faqList} selected={this.state.selected_idx}></Content>
+      <Datagroup></Datagroup>
+      <Btngroup></Btngroup>
     </div>
     
   );
