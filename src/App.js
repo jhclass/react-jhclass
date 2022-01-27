@@ -41,7 +41,14 @@ class App extends React.Component {
         this.setState({mode:'read',selected_idx:idx});
       }}></FaqList>
       <Content mode={this.state.mode} content={this.state.faqList} selected={this.state.selected_idx}></Content>
-      <Datagroup></Datagroup>
+      <Datagroup uploadState={(checkTitle,checkDesc)=>{
+        alert('업로드되었다.');
+        alert(`${checkTitle},${checkDesc}`);
+        const idNum = this.state.faqList.length+1;
+        this.setState({
+         faqList: this.state.faqList.concat({id:idNum-1,title:checkTitle,desc:checkDesc}) //push말구 concat을 사용한다 이유는?
+        });
+      }}></Datagroup>
       <Btngroup></Btngroup>
     </div>
     
