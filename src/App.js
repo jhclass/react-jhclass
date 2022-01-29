@@ -22,7 +22,7 @@ class App extends React.Component {
       ]
     }
   }
- 
+
   render(){
   return (
     //wrap 이 만약에 없다면?? 에러가 뜹니다! 이유는? 
@@ -34,22 +34,39 @@ class App extends React.Component {
         this.setState({mode:'main'});
 
       }}></Title>
-      <FaqList faqList={this.state.faqList} onChangePage={(idx)=>{
+      <FaqList mode={this.state.mode} faqList={this.state.faqList} onChangePage={(idx)=>{
         alert('자주묻는질문출력');
         alert(idx); // FaqList.js에서 data[i].id의 값을 idx인자로 전달은 것!
         alert(`자주묻는질문${idx+1}출력`); //백틱도 활용해봅시다 :)
         this.setState({mode:'read',selected_idx:idx});
       }}></FaqList>
-      <Content mode={this.state.mode} content={this.state.faqList} selected={this.state.selected_idx}></Content>
-      <Datagroup uploadState={(checkTitle,checkDesc)=>{
-        alert('업로드되었다.');
-        alert(`${checkTitle},${checkDesc}`);
-        const idNum = this.state.faqList.length+1;
-        this.setState({
-         faqList: this.state.faqList.concat({id:idNum-1,title:checkTitle,desc:checkDesc}) //push말구 concat을 사용한다 이유는?
-        });
-      }}></Datagroup>
-      <Btngroup></Btngroup>
+      <Content 
+        mode={this.state.mode} 
+        content={this.state.faqList} 
+        selected={this.state.selected_idx} 
+        handleModify={()=>{
+          alert('수정버튼누름');
+          this.setState({mode:'modify'});
+        }
+      }></Content>
+      <Datagroup 
+        uploadState={(checkTitle,checkDesc)=>{
+          alert('업로드되었다.');
+          alert(`${checkTitle},${checkDesc}`);
+          const idNum = this.state.faqList.length+1;
+          this.setState({
+          faqList: this.state.faqList.concat({id:idNum-1,title:checkTitle,desc:checkDesc}), //push말구 concat을 사용한다 이유는?
+          mode:"main"
+          });
+        }}
+        selected={this.state.selected_idx}
+        mode={this.state.mode}
+        faqList={this.state.faqList}
+        cancel={()=>{
+          this.setState({mode:"main"});
+        }}
+      ></Datagroup>
+      <Btngroup mode={this.state.mode} showCreate={()=>{this.setState({mode:"reset"});this.setState({mode:"create"})}}></Btngroup>
     </div>
     
   );

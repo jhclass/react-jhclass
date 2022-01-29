@@ -1,0 +1,4 @@
+.faqBtns {width:320px; padding:10px;}
+.faqBtns > span {display:inline-block; margin-left:10px;width:50px; height:30px; line-height:30px; text-align:Center; color:#fff; cursor:pointer;}
+.faqBtns > span:nth-child(1) {margin-left:0; background-color:blueviolet;}
+.faqBtns > span:nth-child(2) {background-color:palevioletred;}

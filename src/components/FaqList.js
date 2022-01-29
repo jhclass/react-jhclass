@@ -7,6 +7,7 @@ class FaqList extends React.Component{
         
         const boardListLen = data.length;
         const lists = [];
+        const thisMode = this.props.mode;
         
         for(let i=0; i < boardListLen; i++){
          lists.push(<li className="list" key={i}><a href={'/board/'+data[i].id} onClick={(e)=>{
@@ -16,15 +17,25 @@ class FaqList extends React.Component{
          }}>{data[i].title}</a></li>);
          }
          //jsx라는 것을 명심하자! html 이 아니다 유사 html이다.
-        
-        return(
-        <div id="faqList">
-            {/* {list} */}
-            <ul>
-               {lists}
-            </ul>
-        </div>
-        );
+        if(thisMode==='create'|| thisMode==='main'){
+            return(
+                <div id="faqList">
+                    {/* {list} */}
+                    <ul>
+                       {lists}
+                    </ul>
+                </div>
+            );
+        }else{
+            return(
+                <div id="faqList" style={{display:'none'}}>
+                    {/* {list} */}
+                    <ul>
+                       {lists}
+                    </ul>
+                </div>
+            );
+        }
     }
   }
 
