@@ -36,7 +36,7 @@ class Datagroup extends React.Component {
                 <form onSubmit={(e)=>{
                     e.preventDefault();
                     //이부분 수정 함수명교체 하고 해당 순번의 데이터 교체하는 함수작성 어디에? App.js
-                    this.props.uploadState(this.state.title,this.state.desc);
+                    this.props.updateState(this.state.title,this.state.desc,idx);
                 }
                 }> 
                     <ul className="createList">

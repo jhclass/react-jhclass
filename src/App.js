@@ -59,6 +59,12 @@ class App extends React.Component {
           mode:"main"
           });
         }}
+        updateState={(title,desc,idx)=>{
+          this.setState({
+            mode:'main',
+            faqList:this.state.faqList.map((list,index)=>index===idx?{id:idx,title:title,desc:desc}:list)
+          })
+        }}
         selected={this.state.selected_idx}
         mode={this.state.mode}
         faqList={this.state.faqList}
@@ -66,7 +72,7 @@ class App extends React.Component {
           this.setState({mode:"main"});
         }}
       ></Datagroup>
-      <Btngroup mode={this.state.mode} showCreate={()=>{this.setState({mode:"reset"});this.setState({mode:"create"})}}></Btngroup>
+      <Btngroup mode={this.state.mode} showCreate={()=>{this.setState({mode:"create"})}}></Btngroup>
     </div>
     
   );
