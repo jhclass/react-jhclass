@@ -47,8 +47,24 @@ class App extends React.Component {
         handleModify={()=>{
           alert('수정버튼누름');
           this.setState({mode:'modify'});
+          }
         }
-      }></Content>
+        handleDelete={()=>{
+          window.confirm('삭제하시겠습니까?');
+          const currentListLen=this.state.faqList.length;
+          const currentIdx = this.state.selected_idx;
+           let i=0; 
+          while(i<currentListLen){
+            if(i===currentIdx){
+            this.state.faqList.splice(i,1);
+            break;
+            }
+            i++;
+          }
+          alert('삭제되었습니다.');
+          this.setState({mode:'main'});
+        }}
+      ></Content>
       <Datagroup 
         uploadState={(checkTitle,checkDesc)=>{
           alert('업로드되었다.');

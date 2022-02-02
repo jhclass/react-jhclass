@@ -24,7 +24,7 @@ class Content extends React.Component{
                 <p>{content_data[sel_idx].desc}</p>
                 <div className="faqBtns">
                     <span onClick={()=>{this.props.handleModify()}}>수정</span>
-                    <span>삭제</span>
+                    <span onClick={()=>{this.props.handleDelete()}}>삭제</span>
                 </div>
             </div>
             );
